@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{ 
+  border:1px solid red;
+}
+#main{
+  background:#000000;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;  
+}
+p{
+  color: white;
+  font-size: 1.5rem;
+}
