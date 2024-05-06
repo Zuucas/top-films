@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MovieCard } from "../MovieCard/MovieCard";
-import { Center, Flex } from "@chakra-ui/react";
+import { Center, Flex, Grid } from "@chakra-ui/react";
 import axios from "axios";
 
 const searchURL = import.meta.env.VITE_SEARCH;
@@ -19,34 +19,24 @@ export const Search = () => {
         
         axios.get(`${searchURL}?${apiKey}&query=${query}`)
         .then((response) => {
-            console.log(response.data.results);
-
             setTopMovies(response.data.results);
         })
     }
-        useEffect(() => {
-            const searchWithQueryURL = getSearchedMovies;
-    
-           
-            getSearchedMovies(searchWithQueryURL)
+        useEffect(() => { 
+            console.log('effect');
+            getSearchedMovies()
         }, [query]);
         
     return (
         <>
             <Center 
-            fontSize='1.5rem'
-            color='red.500'>
+            color='red.500'
+            mb='20px'>
                 <h1>Resultados para: {query}</h1>
             </Center>
 
-            <Flex 
-            as='section'
-            mt='50px'
-            mx='30px'
-            border='5px solid green'
-            flexWrap='wrap'
-            justify='space-around'
-            >
+            <Grid templateColumns='repeat(3, 1fr)' gap={5}
+            mx='80px'>
                 {topMovies.length === 0 && 
                 <p>
                     Carregando...
@@ -59,7 +49,7 @@ export const Search = () => {
                 key={movie.id}
                 movie={movie} 
                 /> )}
-            </Flex>
+            </Grid> 
         </>
     )
 }

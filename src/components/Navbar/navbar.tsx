@@ -21,13 +21,10 @@ export const NavBar = () => {
         
     }
     return(
-    <>
         <Flex as='nav'
-        p='1rem 2rem'
-        fontSize='1.5rem'
+        p='2rem 2rem'
+        fontSize='2rem'
         justifyContent='space-between'
-        align='center'
-        border='1px solid green'
         bg='#191919'
         >
 
@@ -60,6 +57,7 @@ export const NavBar = () => {
                         _placeholder={{ color: 'red.500'}}
                         variant='flushed'
                         focusBorderColor="red.400"
+                        _focus={{color: '#fff'}}
                         borderColor='red.500'
                         onChange={(e) => setSearch(e.target.value)}
                         value={search}
@@ -72,7 +70,7 @@ export const NavBar = () => {
             </Box>
 
         </Flex>
-    </>)
+)
 
 }
 

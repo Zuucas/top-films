@@ -11,19 +11,21 @@ export const Movie = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState(null);
 
-    const getMovie = async (url) => {
+    // const getMovie = async (url) => {
 
-        axios.get(`${moviesURL}top_rated?${apiKey}`)
-        .then((response) => {
+    //     axios.get(`${moviesURL}top_rated?${apiKey}`)
+    //     .then((response) => {
 
-            setMovie(response.data);
-        })
-    }
+    //         setMovie(response.data);
+    //     })
+    // }
 
     useEffect(() => {
         const movieURL = `${moviesURL}${id}?${apiKey}`;
-        getMovie(movieURL);
-    })
+        // getMovie(movieURL);
+        console.log(id);
+        
+    },[])
 
 
     return (
