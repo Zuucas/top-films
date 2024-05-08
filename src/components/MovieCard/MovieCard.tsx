@@ -1,40 +1,53 @@
 import { Link } from "react-router-dom";
 
 import { FaStar } from 'react-icons/fa'
-import { Box, Flex, Image, Link as ChakraLink, GridItem } from "@chakra-ui/react";
+import {Flex, Image, Link as ChakraLink, GridItem,Text } from "@chakra-ui/react";
 
 const imageUrl = import.meta.env.VITE_IMG;
 
 
-type Movie = {    
+ type Movie = {    
     poster_path: string
     title: string
     vote_average: number
     id: number
+    budget:number//acresncentar
+    runtime:number//acrescentar
+    overview:string //sinopse
+    release_date:string//data de lançamento
+    genres:[{id:number,name:string}]//generos
 }
+//tanto  o budget quanto o runtime e mais elementos, irão ser passados já aqui,
+//e ficarão em espera até quando forem setados para verdadeiro atraves do showStatus
+//para poderem ser exibidos no componente Movie
 
-
-type Props = {
+ export type Props = {
     movie:Movie
+    showLink?:boolean
+    showStatus?:boolean
 }
 
-export const MovieCard = ({movie:{ poster_path, title, vote_average, id }}:Props) => {
+export const MovieCard = ({showLink = true,showStatus,
+                        movie:{ poster_path, title, vote_average, 
+                        id,budget,runtime,overview,release_date,genres }}:Props) => {
     
     
     return(
         <GridItem>
                 <Flex direction='column'
+                position='relative'
                 align='center'
-                bg='#333333'
+                bg={showLink ? '#333333' : 'none'}
                 p='20px'
                 maxW='490px'
-                maxH='900px'
+                maxH={showStatus ? '100%' : '900px'}
                 minH='851px'
                 borderRadius='15px'
                 >
                     <Image
+                        minH='675px'
                         maxW='450px'
-                        src={imageUrl + poster_path}
+                        src={poster_path ? imageUrl + poster_path : 'https://ih1.redbubble.net/image.1893341687.8294/fposter,small,wall_texture,product,750x1000.jpg'} 
                         alt={title}                               
                     />
                 
@@ -46,9 +59,11 @@ export const MovieCard = ({movie:{ poster_path, title, vote_average, id }}:Props
                         <FaStar style={{color: 'yellow', width:'40px',}}/>                    
                             <p>{vote_average}</p>                        
                     </Flex>
-
+                    {showLink &&  
                     <Flex
                         justifyContent='center'
+                        position='absolute'
+                        bottom='4'
                         alignItems='center'
                         bg='#f4d03f '
                         borderRadius='20px'
@@ -58,7 +73,9 @@ export const MovieCard = ({movie:{ poster_path, title, vote_average, id }}:Props
                         textAlign='center'
                         _hover={{
                             bg:'none', color:'#f4d03f', border:'3px solid #f4d03f'}}
-                        >                         
+                        > 
+
+                                              
                         <Link
                         style={{width:'100%'}}
                         to={`/movie/${id}`}>
@@ -67,10 +84,30 @@ export const MovieCard = ({movie:{ poster_path, title, vote_average, id }}:Props
                             > 
                                 Detalhes
                             </ChakraLink>
-                        </Link> 
-                        
+                        </Link>
+                                               
 
                     </Flex>
+                    }
+                    {showStatus &&
+                    <Flex
+                    direction='column'
+                    gap={7}>
+                        <Text
+                        _active={{ color: "red" , bg: "white" }}
+                        > Orçamento: R$:{budget}
+                        </Text>
+                        <Text>Gêneros: {genres.map(genre => genre.name).join(', ')}</Text>
+                        <Text> Sinopse: {overview}
+                        </Text>
+                        <Text> Duração: {runtime} minutos
+                        </Text>
+                        <Text>
+                            Lancamento: {release_date}
+                        </Text>
+                        
+                </Flex>}
+
 
                 </Flex>
         </GridItem>

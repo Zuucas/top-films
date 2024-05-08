@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { BsGraphUp, BsWallet2, BsHourglassSplit } from "react-icons/bs";
+//import { BsGraphUp, BsWallet2, BsHourglassSplit } from "react-icons/bs";
 import { MovieCard } from "../MovieCard/MovieCard";
 import axios from "axios";
+import { Center, } from "@chakra-ui/react";
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -11,19 +12,17 @@ export const Movie = () => {
     const {id} = useParams();
     const [movie, setMovie] = useState(null);
 
-    // const getMovie = async (url) => {
+    const getMovie = async () => {
 
-    //     axios.get(`${moviesURL}top_rated?${apiKey}`)
-    //     .then((response) => {
-
-    //         setMovie(response.data);
-    //     })
-    // }
+        axios.get(`${moviesURL}${id}?${apiKey}`)
+        .then((response) => {
+            setMovie(response.data);
+        })
+    }
 
     useEffect(() => {
-        const movieURL = `${moviesURL}${id}?${apiKey}`;
-        // getMovie(movieURL);
-        console.log(id);
+        getMovie();
+        // console.log(movie.title);
         
     },[])
 
@@ -31,10 +30,21 @@ export const Movie = () => {
     return (
         <div>
             {movie && (
-                <>
-                {movie.title}
-                </>
-            )}
+                <Center
+                >
+                    <MovieCard 
+                    movie={movie}
+                    showLink={false}
+                    showStatus={true}
+                    />           
+          
+                </Center>
+            )}          
+        
+
+
+
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from 'axios';
-import { Center, Flex, Grid } from "@chakra-ui/react";
+import { Center, Grid } from "@chakra-ui/react";
 import { MovieCard } from "../MovieCard/MovieCard";
 
 const moviesURL = import.meta.env.VITE_API;
@@ -38,7 +38,7 @@ export const Home = () => {
                 <h1>Filmes mais bem avaliados</h1>
             </Center>
 
-            <Grid templateColumns='repeat(3, 1fr)' gap={5}
+            <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)'}} gap={5}
             mx='80px'>
                 {topMovies.length === 0 && 
                 <p>Carregando...</p>}

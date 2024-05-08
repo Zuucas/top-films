@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MovieCard } from "../MovieCard/MovieCard";
-import { Center, Flex, Grid } from "@chakra-ui/react";
+import { Center, Grid } from "@chakra-ui/react";
 import axios from "axios";
 
 const searchURL = import.meta.env.VITE_SEARCH;
@@ -30,8 +30,7 @@ export const Search = () => {
     return (
         <>
             <Center 
-            color='red.500'
-            mb='20px'>
+            color='red.500'>
                 <h1>Resultados para: {query}</h1>
             </Center>
 

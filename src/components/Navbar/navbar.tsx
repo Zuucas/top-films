@@ -52,13 +52,7 @@ export const NavBar = () => {
                     onSubmit={handleSubmit}>                
                         <Input 
                         w='300px'
-                        color='#fff'
-                        placeholder="Busque um filme"
-                        _placeholder={{ color: 'red.500'}}
-                        variant='flushed'
-                        focusBorderColor="red.400"
-                        _focus={{color: '#fff'}}
-                        borderColor='red.500'
+                        bg='white'
                         onChange={(e) => setSearch(e.target.value)}
                         value={search}
                         />
