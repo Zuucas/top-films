@@ -22,6 +22,7 @@ export const Movie = () => {
 
     useEffect(() => {
         getMovie();
+
         // console.log(movie.title);
         
     },[])

@@ -39,10 +39,9 @@ export const NavBar = () => {
 
                 <BiCameraMovie cursor={'pointer'} />
                 <Link to="/">
-                    <ChakraLink 
-                    _hover={{textDecor:'none'}}>
+                    
                         TopFilms
-                    </ChakraLink>
+                    
                 </Link> 
             </Flex>
 

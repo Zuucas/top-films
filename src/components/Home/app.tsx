@@ -23,8 +23,9 @@ export const Home = () => {
     
     
         useEffect(() => {         
-    
-            console.log('doisffect');
+
+            console.log(topMovies);
+            
             getTopRatedMovies()
         }, [getTopRatedMovies]);
 
@@ -38,14 +39,18 @@ export const Home = () => {
                 <h1>Filmes mais bem avaliados</h1>
             </Center>
 
-            <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)'}} gap={5}
-            mx='80px'>
+            <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)'}}
+             gap={5}
+            mx='80px'
+            >
                 {topMovies.length === 0 && 
                 <p>Carregando...</p>}
-
+                
                 {topMovies.length > 0 && topMovies
                 .map((movie: any) => 
                     (<MovieCard 
+                    showLink={true}
+                    showStatus={false}
                     movie={movie}
                     key={movie.id}
                     />) )}

@@ -23,17 +23,21 @@ const imageUrl = import.meta.env.VITE_IMG;
 
  export type Props = {
     movie:Movie
-    showLink?:boolean
-    showStatus?:boolean
+    showLink:boolean
+    showStatus:boolean
 }
 
-export const MovieCard = ({showLink = true,showStatus,
+export const MovieCard = ({showLink = true, showStatus = false,
                         movie:{ poster_path, title, vote_average, 
                         id,budget,runtime,overview,release_date,genres }}:Props) => {
     
     
     return(
-        <GridItem>
+        <GridItem 
+        w='100%'
+        display={'flex'}
+        justifyContent='center'
+        >
                 <Flex direction='column'
                 position='relative'
                 align='center'
@@ -79,11 +83,9 @@ export const MovieCard = ({showLink = true,showStatus,
                         <Link
                         style={{width:'100%'}}
                         to={`/movie/${id}`}>
-                            <ChakraLink
-                            _hover={{textDecor:'none'}}                    
-                            > 
+                            
                                 Detalhes
-                            </ChakraLink>
+                            
                         </Link>
                                                
 
@@ -94,7 +96,6 @@ export const MovieCard = ({showLink = true,showStatus,
                     direction='column'
                     gap={7}>
                         <Text
-                        _active={{ color: "red" , bg: "white" }}
                         > Orçamento: R$:{budget}
                         </Text>
                         <Text>Gêneros: {genres.map(genre => genre.name).join(', ')}</Text>

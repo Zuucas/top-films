@@ -23,14 +23,14 @@ export const Search = () => {
         })
     }
         useEffect(() => { 
-            console.log('effect');
             getSearchedMovies()
         }, [query]);
         
     return (
         <>
             <Center 
-            color='red.500'>
+            color='red.500'
+            mb='20px'>
                 <h1>Resultados para: {query}</h1>
             </Center>
 
@@ -44,7 +44,9 @@ export const Search = () => {
 
                 {topMovies.length > 0 && topMovies
                 .map((movie: any) => 
-                <MovieCard 
+                <MovieCard
+                showStatus={false}
+                showLink={true}
                 key={movie.id}
                 movie={movie} 
                 /> )}
