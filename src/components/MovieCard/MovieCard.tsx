@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { FaStar } from 'react-icons/fa'
-import {Flex, Image, Link as ChakraLink, GridItem,Text } from "@chakra-ui/react";
+import {Flex, Image, GridItem,Text } from "@chakra-ui/react";
 
 const imageUrl = import.meta.env.VITE_IMG;
 

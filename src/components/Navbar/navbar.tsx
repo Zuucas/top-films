@@ -1,4 +1,4 @@
-import { Flex, Link as ChakraLink, Button, FormControl, Input, Box } from "@chakra-ui/react"
+import { Flex, Button, FormControl, Input, Box } from "@chakra-ui/react"
 import { Link, useNavigate } from "react-router-dom"
 import { BiCameraMovie } from 'react-icons/bi'
 import { SearchIcon } from "@chakra-ui/icons"
