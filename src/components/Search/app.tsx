@@ -35,7 +35,8 @@ export const Search = () => {
                 <h1>Resultados para: {query}</h1>
             </Center>
 
-            <Grid templateColumns='repeat(3, 1fr)' gap={5}
+            <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)'}}
+             gap={5}
             mx='80px'>
                 {topMovies.length === 0 && 
                 <p>

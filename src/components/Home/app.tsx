@@ -32,8 +32,9 @@ export const Home = () => {
         <>
             <Center 
             color='red.500'
-            mb='20px'>
-                <h1>Filmes mais bem avaliados</h1>
+            mb='20px'
+            >
+                <h1>Filmes mais avaliados</h1>
             </Center>
 
             <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)'}}

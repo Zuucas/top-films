@@ -45,14 +45,9 @@ export const MovieCard = ({showLink = true, showStatus = false,
                 align='center'
                 bg={showLink ? '#333333' : 'none'}
                 p='20px'
-                // maxW={{base: '200px', md: '300px', lg: '490px'}}
-                // maxH={showStatus ? '100%' : '900px'}
-                // minH='851px'
                 borderRadius='15px'
                 >
                     <Image
-                        // minH='675px'
-                        // maxW={{base: '200px', md: '270px', lg: '450px'}}
                         src={poster_path ? imageUrl + poster_path : 'https://ih1.redbubble.net/image.1893341687.8294/fposter,small,wall_texture,product,750x1000.jpg'} 
                         alt={title}                               
                     />
@@ -75,7 +70,6 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         bg='#f4d03f '
                         borderRadius='20px'
                         w='80%'
-                        // h='70px'
                         fontSize='2rem'
                         textAlign='center'
                         _hover={{
@@ -86,9 +80,7 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         <Link
                         style={{width:'100%'}}
                         to={`/movie/${id}`}>
-                            
-                                Detalhes
-                            
+                            Detalhes
                         </Link>
                                                
 
@@ -117,9 +109,10 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         <Flex 
                         gap={1} 
                         align={'start'}
+                        maxW='100%'
                         >
                             <MdOutlineDescription style={{color:'yellow',fontSize:'1.7rem'}}/>
-                            <Text maxW='800px'> Sinopse: {overview}</Text>
+                            <Text w='80%' > Sinopse: {overview}</Text>
                         </Flex>
 
                         <Flex 
