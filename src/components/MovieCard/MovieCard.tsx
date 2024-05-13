@@ -17,7 +17,7 @@ const imageUrl = import.meta.env.VITE_IMG;
     budget:number
     runtime:number
     overview:string 
-    release_date:string
+    release_date:number
     genres:[{id:number,name:string}]
 }
 
@@ -61,7 +61,8 @@ export const MovieCard = ({showLink = true, showStatus = false,
 
                     <Flex
                     align='center' 
-                    gap='1px'>
+                    gap='1px'
+                    mb='50px'>
                         <FaStar style={{color: 'yellow', width:'40px',}}/>                    
                             <p>{vote_average}</p>                        
                     </Flex>
@@ -73,7 +74,7 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         alignItems='center'
                         bg='#f4d03f '
                         borderRadius='20px'
-                        // w='400px'
+                        w='80%'
                         // h='70px'
                         fontSize='2rem'
                         textAlign='center'
@@ -97,30 +98,44 @@ export const MovieCard = ({showLink = true, showStatus = false,
                     <Flex
                     direction='column'
                     color='yelow'
+                    align='start'
                     gap={7}>
-                        <Flex gap={1} align={'center'}>
+                        <Flex gap={1}
+                        align={'center'}
+                        >
                             <IoWalletOutline style={{color:'yellow', fontSize:'1.7rem'}}/>
                             <Text> Orçamento: {budget.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</Text>
                         </Flex>
 
-                        <Flex gap={1} align={'center'}>
+                        <Flex gap={1}
+                        align={'center'}
+                        >
                             <MdInfoOutline style={{color:'yellow', fontSize:'1.7rem'}}/>
                             <Text>Gêneros: {genres.map(genre => genre.name).join(', ')}</Text>
                         </Flex>
 
-                        <Flex gap={1} align={'center'}>
+                        <Flex 
+                        gap={1} 
+                        align={'start'}
+                        >
                             <MdOutlineDescription style={{color:'yellow',fontSize:'1.7rem'}}/>
-                            <Text> Sinopse: {overview}</Text>
+                            <Text maxW='800px'> Sinopse: {overview}</Text>
                         </Flex>
 
-                        <Flex gap={1} align={'center'}>
+                        <Flex 
+                        gap={1} 
+                        align={'center'}
+                        >
                             <MdAccessTime style={{color:'yellow', fontSize:'1.7rem'}}/>
                             <Text> Duração: {runtime} minutos</Text>
                         </Flex>
 
-                        <Flex gap={1} align={'center'}>
+                        <Flex 
+                        gap={1} 
+                        align={'center'}
+                        >
                             <IoMdCalendar style={{color:'yellow', fontSize:'1.7rem'}}/>
-                            <Text>Lançamento: {release_date}</Text>
+                            <Text>Lançamento: {new Date(release_date).toLocaleDateString('pt-BR')}  </Text>
                         </Flex>
                 </Flex>}
 
