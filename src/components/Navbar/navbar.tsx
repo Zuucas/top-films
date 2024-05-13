@@ -12,7 +12,7 @@ export const NavBar = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(search);
+        console.log('você buscou por: ',search);
         
         if(!search) return;
 

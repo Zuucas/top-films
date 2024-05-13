@@ -24,6 +24,7 @@ export const Search = () => {
     }
         useEffect(() => { 
             getSearchedMovies()
+            
         }, [query]);
         
     return (

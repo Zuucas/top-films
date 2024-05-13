@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 import { FaStar } from 'react-icons/fa'
 import {Flex, Image, GridItem,Text } from "@chakra-ui/react";
+import { IoWalletOutline } from "react-icons/io5";
+import { MdOutlineDescription, MdAccessTime,MdInfoOutline  } from "react-icons/md";
+import { IoMdCalendar } from "react-icons/io";
 
 const imageUrl = import.meta.env.VITE_IMG;
 
@@ -11,15 +14,12 @@ const imageUrl = import.meta.env.VITE_IMG;
     title: string
     vote_average: number
     id: number
-    budget:number//acresncentar
-    runtime:number//acrescentar
-    overview:string //sinopse
-    release_date:string//data de lançamento
-    genres:[{id:number,name:string}]//generos
+    budget:number
+    runtime:number
+    overview:string 
+    release_date:string
+    genres:[{id:number,name:string}]
 }
-//tanto  o budget quanto o runtime e mais elementos, irão ser passados já aqui,
-//e ficarão em espera até quando forem setados para verdadeiro atraves do showStatus
-//para poderem ser exibidos no componente Movie
 
  export type Props = {
     movie:Movie
@@ -32,10 +32,12 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         id,budget,runtime,overview,release_date,genres }}:Props) => {
     
     
+
+
     return(
-        <GridItem 
+        <GridItem
         w='100%'
-        display={'flex'}
+        display='flex'
         justifyContent='center'
         >
                 <Flex direction='column'
@@ -43,14 +45,14 @@ export const MovieCard = ({showLink = true, showStatus = false,
                 align='center'
                 bg={showLink ? '#333333' : 'none'}
                 p='20px'
-                maxW='490px'
-                maxH={showStatus ? '100%' : '900px'}
-                minH='851px'
+                // maxW={{base: '200px', md: '300px', lg: '490px'}}
+                // maxH={showStatus ? '100%' : '900px'}
+                // minH='851px'
                 borderRadius='15px'
                 >
                     <Image
-                        minH='675px'
-                        maxW='450px'
+                        // minH='675px'
+                        // maxW={{base: '200px', md: '270px', lg: '450px'}}
                         src={poster_path ? imageUrl + poster_path : 'https://ih1.redbubble.net/image.1893341687.8294/fposter,small,wall_texture,product,750x1000.jpg'} 
                         alt={title}                               
                     />
@@ -71,8 +73,8 @@ export const MovieCard = ({showLink = true, showStatus = false,
                         alignItems='center'
                         bg='#f4d03f '
                         borderRadius='20px'
-                        w='400px'
-                        h='70px'
+                        // w='400px'
+                        // h='70px'
                         fontSize='2rem'
                         textAlign='center'
                         _hover={{
@@ -94,19 +96,32 @@ export const MovieCard = ({showLink = true, showStatus = false,
                     {showStatus &&
                     <Flex
                     direction='column'
+                    color='yelow'
                     gap={7}>
-                        <Text
-                        > Orçamento: R$:{budget}
-                        </Text>
-                        <Text>Gêneros: {genres.map(genre => genre.name).join(', ')}</Text>
-                        <Text> Sinopse: {overview}
-                        </Text>
-                        <Text> Duração: {runtime} minutos
-                        </Text>
-                        <Text>
-                            Lancamento: {release_date}
-                        </Text>
-                        
+                        <Flex gap={1} align={'center'}>
+                            <IoWalletOutline style={{color:'yellow', fontSize:'1.7rem'}}/>
+                            <Text> Orçamento: {budget.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</Text>
+                        </Flex>
+
+                        <Flex gap={1} align={'center'}>
+                            <MdInfoOutline style={{color:'yellow', fontSize:'1.7rem'}}/>
+                            <Text>Gêneros: {genres.map(genre => genre.name).join(', ')}</Text>
+                        </Flex>
+
+                        <Flex gap={1} align={'center'}>
+                            <MdOutlineDescription style={{color:'yellow',fontSize:'1.7rem'}}/>
+                            <Text> Sinopse: {overview}</Text>
+                        </Flex>
+
+                        <Flex gap={1} align={'center'}>
+                            <MdAccessTime style={{color:'yellow', fontSize:'1.7rem'}}/>
+                            <Text> Duração: {runtime} minutos</Text>
+                        </Flex>
+
+                        <Flex gap={1} align={'center'}>
+                            <IoMdCalendar style={{color:'yellow', fontSize:'1.7rem'}}/>
+                            <Text>Lançamento: {release_date}</Text>
+                        </Flex>
                 </Flex>}
 
 

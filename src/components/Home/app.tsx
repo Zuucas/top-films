@@ -23,9 +23,6 @@ export const Home = () => {
     
     
         useEffect(() => {         
-
-            console.log(topMovies);
-            
             getTopRatedMovies()
         }, [getTopRatedMovies]);
 
